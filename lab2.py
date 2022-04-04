@@ -11,14 +11,14 @@ from prettytable import PrettyTable
 var = 86  # номер варианта
 a = pow(-1, var)*0.02*var
 b = a+6
-m = int(1+np.round(np.log2(200)))
+m = 1+int(np.log2(200))
 step = (b-a)/m
 print("Номер варианта:", var)
 print("a =", a, "b =", b)
 print("Число интервалов:", m)
-print(a, a+9*step)
+print(a, a+m*step)
 
-random.seed(555)
+random.seed(0)
 
 x = np.round(np.random.uniform(a, b, 200), 5)
 xs = np.sort(x)
