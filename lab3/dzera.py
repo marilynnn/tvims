@@ -133,7 +133,7 @@ DN = 0
 x_ = 0
 j = 0 #x*
 for k in range(xs.size):
-    buf =max(((k+1)/200 - (xs[k]-a)/(b-a)), (k/200 - (xs[k]-a)/(b-a)))
+    buf =max(abs((k+1)/200 - (xs[k]-a)/(b-a)), abs(k/200 - (xs[k]-a)/(b-a)))
     if (buf > DN):
         DN = buf
         x_ = xs[k]
@@ -142,4 +142,4 @@ for k in range(xs.size):
 #-------------------Таблиза 5.1-------------------
 
 print("a=", a, "b=", b, "N=", 200, "D_N=", np.round(DN, 5), "DNsqrt(N)=", np.round(DN*np.sqrt(200), 5),
-      "x*0=", x_, "F(x*)=", np.round((x_ - a)/(b-a), 5), "FN(x*)=", np.round(((j+1)/200), 5), "FN(x* - 0)=", np.round(j/200, 5))
+      "x*0=", x_, "F(x*)=", np.round((x_ - a)/(b-a), 5), "FN(x*)=", np.round(((j)/200), 5), "FN(x* - 0)=", np.round((j-1)/200, 5))
