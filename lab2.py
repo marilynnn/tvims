@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib import ticker
 from prettytable import PrettyTable
 
-var = 86  # номер варианта
+var = 80  # номер варианта
 a = pow(-1, var)*0.02*var
 b = a+6
 m = 1+int(np.log2(200))
@@ -16,13 +16,19 @@ step = (b-a)/m
 print("Номер варианта:", var)
 print("a =", a, "b =", b)
 print("Число интервалов:", m)
-print(a, a+m*step)
+print(a, a+8*step)
 
-random.seed(0)
 
 x = np.round(np.random.uniform(a, b, 200), 5)
 xs = np.sort(x)
 #print (xs)
+print("---------- Неупорядоченная выборка ----------")
+for k in range(len(x)):
+    print(x[k])
+
+print("---------- Упорядоченная выборка ----------")
+for k in range(len(xs)):
+    print(xs[k])
 
 arr = [0]*10
 for k in range(m+1):
@@ -75,7 +81,7 @@ for k in range(m):
     ox.plot([arr[k], arr[k+1]], [h, h], 'k')
     ox.plot([arr[k+1], arr[k+1]], [h, 0], 'k')
 ox.yaxis.set_major_locator(ticker.MultipleLocator(0.1))
-ox.xaxis.set_major_locator(ticker.MultipleLocator(0.2))
+ox.xaxis.set_major_locator(ticker.MultipleLocator(0.5))
 plt.title("Гистограмма относительных частот")
 plt.grid()
 plt.show()
@@ -149,3 +155,4 @@ table.add_row(["Выборочный коэф. асс.",vka, vka_,  np.round(abs
 table.add_row(["Выборочный коэф. асс.",vke, vke_,  np.round(abs(vke-vke_), 5), np.round(100*abs((vke-vke_)/vke_), 5)])
 
 print(table)
+
